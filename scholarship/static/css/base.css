@@ -1,0 +1,277 @@
+/* logo */
+img.logo {
+    position: absolute;
+    background: white;
+    left: 0;
+    top: 0;
+    border: 5rem solid;
+    border-top: 0rem;
+    border-bottom: 0rem;
+}
+
+select {
+    text-align: center;
+    border: 0.1rem solid;
+    border-radius: 0.5rem;
+    background: antiquewhite;
+}
+
+input{
+    text-align: center;
+    border: 0.1rem solid;
+    border-radius: 0.5rem;
+    background-color: antiquewhite;
+}
+input[type=checkbox] + label{
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;
+}
+
+input[type=checkbox]+ label:before {     
+
+    content: "";  
+    display: inline-block;  
+  
+    width: 20px;  
+    height: 20px;  
+  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #ccc;  
+    border-radius: 2px; 
+    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+input[type=checkbox]:checked + label:before { 
+    content: "\2713";  /* 체크모양 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 18px; 
+    font-weight:800; 
+    color: #fff;  
+    background:#2f87c1;
+    text-align: center;  
+    line-height: 18px;  
+} 
+
+body{
+    text-align: center;
+}
+
+div{
+    min-width: 1000px;
+    min-height: auto;
+}
+
+ul{
+    text-align: center;
+    padding: 0;
+}
+
+ul#scholar-application-period {
+    border: none;
+    font-size: small;
+    font-family: monospace;
+}
+
+
+.link ul{
+    border: 0.1rem solid;
+    border-radius: 0.5rem;
+}
+
+li{
+    display: inline-block;
+}
+
+.pagination li{
+    font-size: 12px;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pagination li.active {
+    font-size: 12px;
+    border: 1px solid dimgray;
+    background-color: dimgray;
+    color: white;
+    padding: 5px 10px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+a.link {
+    color: white;
+    text-decoration: none;
+}
+
+
+.header-content {
+    text-align: center;
+    margin: 0 auto;
+    background-color: black;
+    opacity: 0.8;
+}
+
+li.header-list {
+    display: inline-block;
+    position: relative;
+    margin: 1.3rem;
+}
+
+ul.list {
+    display: inline;
+    margin: 1.3rem;
+}
+
+.list a {
+    border: none 1rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.list a:hover{
+    opacity: 0.5;
+}
+
+li.scholar-list {
+    text-align: center;
+    border: 0.1rem solid;
+    border-radius: 0.4rem;
+    border-color: rgb(83,89,99);
+    padding: 10px 10px;
+    margin: 10px 10px;
+}
+li.scholar{
+    text-align: center;
+    border: 0.1rem solid;
+    border-radius: 0.5rem;
+    border-color: rgb(76, 115, 178);
+    padding: 10px 10px;
+    background-color:rgb(76, 115, 178);
+    margin: 10px 10px;
+}
+
+li.scholar:hover {
+    background: rgb(116, 166, 247);
+    border: 0.1rem solid;
+    border-color: rgb(116, 166, 247);
+}
+
+.scholar-content a{
+    border: 0.3rem solid;
+    border-color: black;
+    background: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.3rem;
+}
+
+ul.scholar-period {
+    font-family: monospace;
+    font-size: smaller;
+}
+
+
+.link ul {
+    border: 0.05rem solid;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+}
+
+.introduce{
+    margin: 5rem;
+}
+
+/* detail.html*/
+
+.content-detail {
+    margin: 4rem 10rem;
+}
+
+h1.title {
+    margin: 4rem 0;
+}
+
+.list-detail ul {
+    margin: 3rem 1rem;
+    text-align: left;
+    border:0.1rem solid;
+    padding: 1rem;
+}
+
+p.detail-title{
+    display: inline;
+    color: #2f87c1;
+}
+
+/* 유저 마이페이지 */
+
+
+.user-profile h1{
+    text-align: center;
+}
+
+.user-profile p{
+    padding:0.5rem;
+}
+
+li.user-profile {
+    display: inline-block;
+    border: 0.1rem solid;
+    border-radius: 0.5rem;
+    padding:1rem;
+}
+
+
+form.form-signup {
+    text-align: center;
+    margin: 3rem 10rem;
+    border: 0.3rem solid;
+    border-radius: 0.5rem;
+    padding: 3rem;
+}
+
+.form-signup p{
+    text-align: left;
+}
+.form-signup label{
+    color: dimgray;
+
+}
+span.helptext {
+    font-size: xx-small;
+    color: darkgrey;
+    text-align: left;
+    display: inherit;
+}
+
+.form-signup li{
+    padding: 0.3rem;
+    margin: 1rem;
+    display: inherit;
+    text-align: left;
+}
+
+.helptext li{
+    margin:0;
+    padding: 0;
+}
+
+
+/* 로그인 폼*/
+
+form.login-form{
+    margin:10rem;
+
+}

@@ -1,0 +1,51 @@
+{% extends 'base_layout.html' %}
+    {% block content %}
+
+    <div class="my-scholar">
+        <h1>내가 받을 수 있는 장학금</h1>
+        {% for instance in scholars%}
+        <div class="content">
+        <li class="scholar">
+        <a class="link" href="{% url 'scholarship:detail' instance.slug %}">
+            <ul id="scholar-name">장학이름:{{instance.scholar_name}}</ul>
+            <ul id="scholar-reward">장학혜택:{{instance.scholar_reward}}</ul>
+            <ul id="scholar-recruitment">선발인원:{{instance.scholar_recruitment_num}}</ul>
+            <ul id="scholar-application-period">모집기간:{{instance.scholar_application_start}}~{{instance.scholar_application_end}}</ul>
+        </a>
+        </li>
+        </div>
+        {% endfor%}
+    </div>
+
+    {# pagination #}
+    <nav class="pagination">
+        <ul class="pagination">
+        {% if scholars.has_previous %}
+            <li>
+                <a href="?page={{ page_start_index }}">
+                    <span>Prev</span>
+                </a>
+            </li>
+        {% endif %}
+        
+        {% for i in page_range %}
+            {% if i == scholars.number %}
+            <li class="active"><span>{{ i }}</span></li>
+            {% else %}
+            <li class="active">
+                <span><a href="?page={{ i }}">{{i}}</a></span>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if scholars.has_next %}
+            <li>
+                <a href="?page={{ page_end_index}}">
+                    <span>Next</span>
+            </a>
+            </li>
+        {% endif %}
+        </ul>
+    </nav>
+
+    {% endblock %}

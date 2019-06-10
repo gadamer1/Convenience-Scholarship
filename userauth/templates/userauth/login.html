@@ -1,0 +1,16 @@
+{% extends 'base_layout.html'%}
+{% block content %}
+        <div class="content">
+            {%if form.errors %}
+            <p>ID나 패스워드가 일치하지 않습니다</p>
+            {% endif%}
+            <form class="login-form" action="{% url 'userauth:login'%}" method="POST">
+                {% csrf_token%}
+                {{form.as_ul}}
+                {% if request.GET.next %}
+                    <input type="hidden" name="next" vallue="{{request.GET.next}}">
+                {% endif%}
+                <input type="submit" value="login">
+            </form>
+        </div>
+{% endblock %}

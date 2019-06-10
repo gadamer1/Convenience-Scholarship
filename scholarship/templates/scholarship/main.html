@@ -1,0 +1,56 @@
+{% extends 'base_layout.html' %}
+    {% block content %}
+
+    <div class="about">
+        <h1>간편한 장학금</h1>
+        <li>
+            <ul>내 정보에 맞춰 받을 수 있는 장학금을 추천해드립니다.</ul>
+        </li>
+    </div>
+
+    <div class="introduce">
+        <h1>현재 장학금 리스트</h1>
+    </div>
+        <div class="scholar-content">
+        {% for scholar in scholars%}
+            <li class="scholar-list">
+                <ul>
+                <a href="{%url 'scholarship:detail' scholar.slug%}">{{scholar.scholar_name}}</a>
+                </ul>
+                <ul class="scholar-period">{{scholar.scholar_application_end}}까지 접수</ul>
+            </li>
+        {% endfor %}
+        </div>
+        </div>
+        
+    {# pagination #}
+    <nav class="pagination">
+        <ul class="pagination">
+        {% if scholars.has_previous %}
+            <li>
+                <a href="?page={{ page_start_index }}">
+                    <span>Prev</span>
+                </a>
+            </li>
+        {% endif %}
+        
+        {% for i in page_range %}
+            {% if i == scholars.number %}
+            <li class="active"><span>{{ i }}</span></li>
+            {% else %}
+            <li class="active">
+                <span><a href="?page={{ i }}">{{i}}</a></span>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if scholars.has_next %}
+            <li>
+                <a href="?page={{ page_end_index}}">
+                    <span>Next</span>
+            </a>
+            </li>
+        {% endif %}
+        </ul>
+    </nav>
+    {% endblock %}

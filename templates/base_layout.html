@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <!---favicon-->
+        <link rel="shortcut icon" href="{% static 'favicon_io/favicon.ico'%}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{STATIC_ROOT}}favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{STATIC_ROOT}}favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{STATIC_ROOT}}favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <!--------------------------------------------------------->
+        
+        <link rel="stylesheet" href="{% static 'css/base.css'%}" type="text/css">
+        {%block script%}
+        {% endblock%}
+
+        
+        <header>
+            <div class="header-content">
+            <ul class="list"><a href="{%url 'scholarship:main'%}"><img class="logo" src="{%static 'img/logo.png'%}" alt=""></a></ul>
+            <li class="header-list">
+                <ul class="list"><a href="{%url 'scholarship:main'%}">장학금</a></ul>
+                {% if user.is_authenticated%}
+                <ul class="list"><a href="{% url 'scholarship:my_scholar'%}">내가 받을 수 있는 장학금</a></ul>
+                {% else%}
+                <ul class="list"><a href="{% url 'userauth:login'%}">내가 받을 수 있는 장학금</a></ul>
+                {% endif%}
+                {% if user.is_authenticated%}
+                <ul class="list"><a href="{%url 'userauth:logout'%}">로그아웃</a></ul>
+                <ul class="list"><a href="{% url 'userauth:detail' %}">상세정보</a></ul>
+                {% else %}
+                <ul class="list"><a href="{% url 'userauth:login' %}">로그인</a></ul>
+                <ul class="list"><a href="{% url 'userauth:signup'%}">회원가입</a></ul>
+                {% endif%}                        
+            </li>
+            </div>
+        </header>
+    </head>
+
+    <body>
+        {% block content%}
+        {% endblock%}
+    </body>
+
+    <footer>
+
+    </footer>
+</html>

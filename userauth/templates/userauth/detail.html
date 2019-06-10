@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+    {% block content%}
+
+    <div class="user-profile">
+        <h1>내 상세정보</h1>
+        <li class="user-profile">
+        <p>내 성적: {{user.profile.user_grade}}</p>
+        <p>내가 수료한 학기: {{user.profile.user_completion_semester}}</p>
+        <p>내 거주지: {{user.profile.user_living_area}}</p>
+        <p>내 소득분위: {{user.profile.user_income_level}}</p>
+        </li>
+    </div>
+
+    <div>
+        <h1>상세정보 저장</h1>
+        {% if form.errors%}
+        <p>제대로 입력해주세요</p>
+        {% endif %}
+        <form class="form-signup" action="{%url 'userauth:detail'%}" method="POST">
+            {% csrf_token%}
+            {{detail_form.as_p}}
+            <input type="submit" value="확인">
+        </form>
+    </div>
+{% endblock %}
