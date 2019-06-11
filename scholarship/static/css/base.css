@@ -96,12 +96,23 @@ li{
     position: relative;
 }
 
-.pagination li.active {
+.pagination li.active-none {
     font-size: 12px;
     border: 1px solid dimgray;
     background-color: dimgray;
     color: white;
     padding: 5px 10px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pagination li.active-href {
+    font-size: 12px;
+    border: 1px solid dimgray;
+    background-color: white;
+    color: dimgray;
+    padding: 5px 10px;
+    text-decoration: none;
     margin: 0 auto;
     position: relative;
 }
@@ -140,7 +151,7 @@ ul.list {
     text-align: center;
 }
 
-.list a:hover{
+.header-list a:hover{
     opacity: 0.5;
 }
 
@@ -168,14 +179,7 @@ li.scholar:hover {
     border-color: rgb(116, 166, 247);
 }
 
-.scholar-content a{
-    border: 0.3rem solid;
-    border-color: black;
-    background: black;
-    color: white;
-    text-decoration: none;
-    border-radius: 0.3rem;
-}
+
 
 ul.scholar-period {
     font-family: monospace;
@@ -272,6 +276,8 @@ span.helptext {
 /* 로그인 폼*/
 
 form.login-form{
-    margin:10rem;
-
+    border: 0.3rem solid;
+    border-radius: 0.5rem;
+    padding: 3rem;
+    margin: 10rem;
 }

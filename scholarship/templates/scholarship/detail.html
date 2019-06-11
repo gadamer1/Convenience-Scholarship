@@ -9,10 +9,11 @@
             <ul><p class="detail-title">선발대상:</p> {{scholar.scholar_who_draft}}</ul>
             <ul><p class="detail-title">접수방법:</p> {{scholar.scholar_howto}}</ul>
             <ul><p class="detail-title">제출서류:</p> {{scholar.scholar_needs}}</ul>
-            <ul><p class="detail-title">선발인원:</p> {{scholar.recruitment_num}}</ul>
+            <ul><p class="detail-title">선발인원:</p> {{scholar.scholar_recruitment_num}}</ul>
             <ul><p class="detail-title">모집기간:</p> {{scholar.scholar_application_start}}~{{scholar.scholar_application_end}}</ul>
             <ul><p class="detail-title">장학재단명:</p> {{scholar.scholar_foundation_name}}</ul>
             <ul><p class="detail-title">문의:</p> {{scholar.scholar_qna}}</ul>
+            <ul><p class="detail-title">양식:</p><a href="{{MEDIA_ROOT}}{{scholar.form_file.url}}">{{scholar.form_file}}</a></ul>
         </li>
     </div>
     {% endblock %}

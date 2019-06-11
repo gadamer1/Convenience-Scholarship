@@ -6,6 +6,9 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.http import HttpResponse
 from .models import Scholar_content,Scholar_filter,Uniqueness
 from django.db.models import Q
+from django.core.files import File
+import os
+from scholar.settings import MEDIA_ROOT
 # Create your views here.
 
 
@@ -38,8 +41,13 @@ def main(request):
 
 def scholarship_detail(request,scholar_slug):
     scholar = Scholar_content.objects.get(slug=scholar_slug)
-    
-    return render(request,'scholarship/detail.html',{'scholar':scholar})
+    FILE_DIR = os.path.join(MEDIA_ROOT,str(scholar.form_file))
+    if os.path.exists(FILE_DIR):
+        form_file = open(FILE_DIR,'r')
+        django_file = File(form_file)
+    else:
+        return render(request,'scholarship/detail.html',{'scholar':scholar})
+    return render(request,'scholarship/detail.html',{'scholar':scholar,'file':django_file})
 
 @login_required(login_url ='login/login')
 def scholarship_my_scholar(request):
@@ -49,7 +57,22 @@ def scholarship_my_scholar(request):
     scholars={} 
     scholars=list(scholars)
     for instance in instances:
-        scholars += list(Scholar_content.objects.filter(scholar_name=instance.filter_id.scholar_name))
+        i=0
+        for attr_name in Uniqueness._meta.get_fields():
+            print(attr_name)
+            i+=1
+            if getattr(instance.uniqueness,attr_name.name):
+                if i==1:
+                    continue
+                elif i==2:
+                    continue
+                elif getattr(request.user.useruniqueness,attr_name.name):
+                    scholars += list(Scholar_content.objects.filter(scholar_name=instance.filter_id.scholar_name))
+                    break
+            elif i==13:
+                scholars += list(Scholar_content.objects.filter(scholar_name=instance.filter_id.scholar_name))
+                break
+    
 
     page = request.GET.get('page','1')
     page = int(page)

@@ -1,4 +1,5 @@
 {% load static %}
+{% load sass_tags %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,17 +9,17 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{STATIC_ROOT}}favicon_io/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="{{STATIC_ROOT}}favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="{{STATIC_ROOT}}favicon_io/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
         <!--------------------------------------------------------->
-        
+        <link rel="stylesheet" href="{%sass_src 'scss/logo.scss' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'css/base.css'%}" type="text/css">
+        <link rel="stylesheet" href="{%static 'js/logo.js'}">
         {%block script%}
         {% endblock%}
 
         
         <header>
             <div class="header-content">
-            <ul class="list"><a href="{%url 'scholarship:main'%}"><img class="logo" src="{%static 'img/logo.png'%}" alt=""></a></ul>
+            <ul class="list"><a href="{%url 'scholarship:main'%}"><img class="logo" id="logo" src="{%static 'img/logo.png'%}" alt=""></a></ul>
             <li class="header-list">
                 <ul class="list"><a href="{%url 'scholarship:main'%}">장학금</a></ul>
                 {% if user.is_authenticated%}
@@ -39,8 +40,10 @@
     </head>
 
     <body>
+        <div class="content"></div>
         {% block content%}
         {% endblock%}
+    </div>
     </body>
 
     <footer>

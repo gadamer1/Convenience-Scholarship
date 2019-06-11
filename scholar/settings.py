@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'userauth',
     'scholarship',
+    'sass_processor',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+
+]
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(PROJECT_DIR, 'extra-styles/scss'),
+    os.path.join(PROJECT_DIR, 'node_modules'),
+]
+
+SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
 
 ROOT_URLCONF = 'scholar.urls'
 
@@ -123,3 +139,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+SASS_PROCESSOR_ENABLED = True
+
+SASS_OUTPUT_STYLE = 'compact'
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+SASS_PRECISION = 8

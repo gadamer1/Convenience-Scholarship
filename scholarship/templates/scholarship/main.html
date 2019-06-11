@@ -15,7 +15,7 @@
         {% for scholar in scholars%}
             <li class="scholar-list">
                 <ul>
-                <a href="{%url 'scholarship:detail' scholar.slug%}">{{scholar.scholar_name}}</a>
+                <a class="btn-{{scholar.randomtag}}" href="{%url 'scholarship:detail' scholar.slug%}">{{scholar.scholar_name}}</a>
                 </ul>
                 <ul class="scholar-period">{{scholar.scholar_application_end}}까지 접수</ul>
             </li>

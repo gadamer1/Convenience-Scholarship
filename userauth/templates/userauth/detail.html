@@ -8,6 +8,13 @@
         <p>내가 수료한 학기: {{user.profile.user_completion_semester}}</p>
         <p>내 거주지: {{user.profile.user_living_area}}</p>
         <p>내 소득분위: {{user.profile.user_income_level}}</p>
+        {% for field in user_detail_form %}
+        <div class="detail-form-field">
+            {%if field.value%}
+            <p>{{field.label}}</p>
+            {%endif%}
+        {% endfor%}
+        </div>
         </li>
     </div>
 
@@ -19,6 +26,7 @@
         <form class="form-signup" action="{%url 'userauth:detail'%}" method="POST">
             {% csrf_token%}
             {{detail_form.as_p}}
+            {{uniqueness_form.as_p}}
             <input type="submit" value="확인">
         </form>
     </div>

@@ -86,7 +86,7 @@ class Profile(models.Model):
 
 
 class UserUniqueness(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    u_ID = models.OneToOneField(User, on_delete=models.CASCADE)
     #다문화가정
     u_1=models.BooleanField(default=False)
     #기초생활수급자
