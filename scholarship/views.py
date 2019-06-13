@@ -42,12 +42,7 @@ def main(request):
 def scholarship_detail(request,scholar_slug):
     scholar = Scholar_content.objects.get(slug=scholar_slug)
     FILE_DIR = os.path.join(MEDIA_ROOT,str(scholar.form_file))
-    if os.path.exists(FILE_DIR):
-        form_file = open(FILE_DIR,'r')
-        django_file = File(form_file)
-    else:
-        return render(request,'scholarship/detail.html',{'scholar':scholar})
-    return render(request,'scholarship/detail.html',{'scholar':scholar,'file':django_file})
+    return render(request,'scholarship/detail.html',{'scholar':scholar})
 
 @login_required(login_url ='login/login')
 def scholarship_my_scholar(request):
